@@ -18,5 +18,12 @@ module PrivatePub
         raw("PrivatePub.sign(#{subscription.to_json});")
       end
     end
+
+    def unsubscribe(channel)
+      subscription = PrivatePub.subscription(:channel => channel)
+      content_tag "script", :type => "text/javascript" do
+        raw("PrivatePub.unsubscribe(#{subscription.to_json});")
+      end
+    end
   end
 end
